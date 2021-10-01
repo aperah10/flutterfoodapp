@@ -71,7 +71,7 @@ class SingleBtn extends StatelessWidget {
                     colors: [new Color(0xff374ABE), new Color(0xff64B6FF)],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight),
-                borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                borderRadius: BorderRadius.all(Radius.circular(30.0))),
             child: Container(
               constraints: BoxConstraints(
                   maxWidth: 300.0,

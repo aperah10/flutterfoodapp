@@ -112,9 +112,9 @@ class ProdGridListShow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(3),
+      padding: const EdgeInsets.all(10),
       child: SizedBox(
-        width: 180.0,
+        width: 170.0,
         child: Wrap(
           children: <Widget>[
             InkWell(
