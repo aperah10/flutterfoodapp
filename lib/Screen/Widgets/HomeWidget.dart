@@ -81,7 +81,7 @@ class ProdData extends StatelessWidget {
             physics: ScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: 0.90,
+              childAspectRatio: 0.80,
             ),
             itemCount: snapshot.data!.length,
             itemBuilder: (
@@ -114,7 +114,7 @@ class ProdGridListShow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: SizedBox(
-        width: 170.0,
+        width: 160.0,
         child: Wrap(
           children: <Widget>[
             InkWell(

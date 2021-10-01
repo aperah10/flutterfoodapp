@@ -56,25 +56,38 @@ class _HomeScrState extends State<HomeScr> {
           child: Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 3, 0, 3),
+                padding: const EdgeInsets.fromLTRB(0, 5, 0, 3),
                 child: Card(
                   child: Container(
                     color: Colors.yellow,
                     height: 30,
                     width: double.infinity,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 3),
-                      child: Text(
-                        '   Select Delivery Address ',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: 18,
+                      padding: const EdgeInsets.only(
+                        top: 5,
+                        left: 10,
+                        right: 10,
+                      ),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            WidgetSpan(
+                              child: Icon(Icons.add_location_rounded, size: 20),
+                            ),
+                            TextSpan(
+                                text: " Select Delivery Address",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                )),
+                          ],
                         ),
                       ),
                     ),
                   ),
                 ),
               ),
+              Divider(),
               Container(height: 180, width: double.infinity, child: SlidData()),
               Divider(),
               // ! PRODUCT LIST HOME PAGE

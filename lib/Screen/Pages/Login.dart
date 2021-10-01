@@ -14,52 +14,55 @@ class LoginScr extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // ! SCREEN PAGE
-              Container(
-                padding: EdgeInsets.all(20),
-                child: Center(
-                  child: Image.asset(
-                    'images/logo.png',
-                    width: 130,
-                    height: 130,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 50),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // ! SCREEN PAGE
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Center(
+                    child: Image.asset(
+                      'images/logo.png',
+                      width: 130,
+                      height: 130,
+                    ),
                   ),
                 ),
-              ),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                      onTap: () {
-                        Navigator.of(context)
-                            .pushReplacementNamed(LoginScr.routeName);
-                      },
-                      child: Text(
-                        'LOGIN',
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 21,
-                            decoration: TextDecoration.underline,
-                            decorationColor: Colors.red),
-                      )),
-                  InkWell(
-                      onTap: () {
-                        Navigator.of(context)
-                            .pushReplacementNamed(RegisterScr.routeName);
-                      },
-                      child: Text('SIGNUP',
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    InkWell(
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushReplacementNamed(LoginScr.routeName);
+                        },
+                        child: Text(
+                          'LOGIN',
                           style: TextStyle(
-                            fontSize: 21,
-                          )))
-                ],
-              ),
-              //  ! REGISTER PAGE
+                              color: Colors.red,
+                              fontSize: 21,
+                              decoration: TextDecoration.underline,
+                              decorationColor: Colors.red),
+                        )),
+                    InkWell(
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushReplacementNamed(RegisterScr.routeName);
+                        },
+                        child: Text('SIGNUP',
+                            style: TextStyle(
+                              fontSize: 21,
+                            )))
+                  ],
+                ),
+                //  ! REGISTER PAGE
 
-              LoginForm()
-            ],
+                LoginForm()
+              ],
+            ),
           ),
         ),
       ),
@@ -111,8 +114,9 @@ class _LoginFormState extends State<LoginForm> {
         key: _form,
         child: Column(children: [
           EditFormFields(
-            placeholder: 'phone',
+            placeholder: 'Mobile',
             controller: phoneController,
+            icon: Icons.mobile_friendly,
             inputType: TextInputType.emailAddress,
             formValidator: (String? val) {
               if (val == null || val.isEmpty) {
@@ -122,6 +126,7 @@ class _LoginFormState extends State<LoginForm> {
           ),
           EditFormFields(
             placeholder: 'OTP',
+            icon: Icons.mobile_screen_share,
             controller: otpController,
             inputType: TextInputType.number,
             formValidator: (String? val) {

@@ -14,51 +14,54 @@ class RegisterScr extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // ! SCREEN PAGE
-              Container(
-                padding: EdgeInsets.all(20),
-                child: Center(
-                  child: Image.asset(
-                    'images/logo.png',
-                    width: 130,
-                    height: 130,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 50.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // ! SCREEN PAGE
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Center(
+                    child: Image.asset(
+                      'images/logo.png',
+                      width: 130,
+                      height: 130,
+                    ),
                   ),
                 ),
-              ),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                      onTap: () {
-                        Navigator.of(context)
-                            .pushReplacementNamed(RegisterScr.routeName);
-                      },
-                      child: Text(
-                        'SIGNUP',
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 21,
-                            decoration: TextDecoration.underline,
-                            decorationColor: Colors.red),
-                      )),
-                  InkWell(
-                      onTap: () {
-                        Navigator.of(context)
-                            .pushReplacementNamed(LoginScr.routeName);
-                      },
-                      child: Text('LOGIN',
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    InkWell(
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushReplacementNamed(RegisterScr.routeName);
+                        },
+                        child: Text(
+                          'SIGNUP',
                           style: TextStyle(
-                            fontSize: 21,
-                          )))
-                ],
-              ),
-              //  ! REGISTER PAGE
-              SignUpForm()
-            ],
+                              color: Colors.red,
+                              fontSize: 21,
+                              decoration: TextDecoration.underline,
+                              decorationColor: Colors.red),
+                        )),
+                    InkWell(
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushReplacementNamed(LoginScr.routeName);
+                        },
+                        child: Text('LOGIN',
+                            style: TextStyle(
+                              fontSize: 21,
+                            )))
+                  ],
+                ),
+                //  ! REGISTER PAGE
+                SignUpForm()
+              ],
+            ),
           ),
         ),
       ),
@@ -80,7 +83,7 @@ class SignUpForm extends StatefulWidget {
 class _SignUpFormState extends State<SignUpForm> {
   final _form = GlobalKey<FormState>();
   final phoneController = TextEditingController();
-  final otpController = TextEditingController();
+  final emailController = TextEditingController();
   /* -------------------------------------------------------------------------- */
   /*                      //  !SUBMIT MEHTOD FOR VALIDATION                     */
   /* -------------------------------------------------------------------------- */
@@ -114,24 +117,32 @@ class _SignUpFormState extends State<SignUpForm> {
         key: _form,
         child: Column(children: [
           EditFormFields(
-            placeholder: 'phone',
+              placeholder: 'Email',
+              controller: emailController,
+              icon: Icons.email,
+              inputType: TextInputType.emailAddress,
+              formValidator: (String? val) {
+                String pattern =
+                    r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                if (val == null || val.isEmpty) {
+                  return 'Enter the Email';
+                }
+                RegExp regex = new RegExp(pattern);
+                if (!regex.hasMatch(val)) {
+                  return "enter valid email";
+                }
+              }),
+
+          EditFormFields(
+            placeholder: 'Phone',
             controller: phoneController,
+            icon: Icons.mobile_friendly,
             inputType: TextInputType.number,
             formValidator: (String? val) {
               if (val == null || val.isEmpty) {
                 return 'Enter the value';
               }
-              if (val.length < 10) {
-                return 'Enter Valid Mobile Number';
-              }
-            },
-          ),
-          EditFormFields(
-            placeholder: 'OTP',
-            controller: otpController,
-            inputType: TextInputType.number,
-            formValidator: (String? val) {
-              if (val == null || val.isEmpty) {
+              if (val.length > 10) {
                 return 'Enter the value';
               }
             },

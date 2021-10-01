@@ -5,6 +5,7 @@ class EditFormFields extends StatefulWidget {
   final TextInputType? inputType;
   final String? placeholder;
   String? labelText;
+  IconData? icon;
 
   final TextEditingController? controller;
   String? Function(String?)? formValidator;
@@ -16,6 +17,7 @@ class EditFormFields extends StatefulWidget {
     this.controller,
     this.formValidator,
     this.labelText,
+    this.icon,
   }) : super(key: key);
 
   @override
@@ -31,20 +33,21 @@ class _FieldFState extends State<EditFormFields> {
         height: 75,
         margin: EdgeInsets.only(),
         child: TextFormField(
-          controller: widget.controller,
-          keyboardType: widget.inputType,
-          minLines: 1,
-          validator: widget.formValidator,
-          autofocus: false,
-          decoration: InputDecoration(
+            controller: widget.controller,
+            keyboardType: widget.inputType,
+            minLines: 1,
+            validator: widget.formValidator,
+            autofocus: false,
+            decoration: InputDecoration(
               labelText: widget.labelText,
               hintText: widget.placeholder,
               // Set text upper animation
-              border: OutlineInputBorder(),
-              suffixIcon: Padding(
+              prefixIcon: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 6.0),
-              )),
-        ),
+                child: Icon(widget.icon),
+              ),
+              border: OutlineInputBorder(),
+            )),
       ),
     );
   }
