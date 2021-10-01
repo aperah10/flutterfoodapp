@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Demo',
+        title: 'Food App',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
