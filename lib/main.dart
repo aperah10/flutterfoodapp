@@ -3,6 +3,7 @@ import 'package:demo1/Screen/Pages/Splash.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'MyPage/Qty.dart';
 import 'Screen/Pages/Home.dart';
 import 'Screen/Pages/Login.dart';
 import 'Screen/Pages/Register.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: SplashScr(),
+        home: QtyField(),
         routes: {
           SplashScr.routeName: (ctx) => SplashScr(),
           HomeScr.routeName: (ctx) => HomeScr(),
